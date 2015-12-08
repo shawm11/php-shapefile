@@ -1,0 +1,12 @@
+{
+    "name": "shawm11/php-shapefile",
+    "description": "A PHP Class to read any ESRI Shapefile and its associated DBF into a PHP Array",
+    "keywords": ["shapefile", "shape", "shp", "dbf", "esri"],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "prefer-stable": true
+}
