@@ -4,7 +4,9 @@
     "keywords": ["shapefile", "shape", "shp", "dbf", "esri"],
     "license": "MIT",
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": ">=5.0.0"
+    },
     "autoload": {
         "classmap": ["src/"]
     },
