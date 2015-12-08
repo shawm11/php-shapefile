@@ -42,7 +42,7 @@ class XBaseRecord {
     var $recordIndex;
     
     function XBaseRecord($table, $recordIndex, $rawData=false) {
-        $this->table =& $table;
+        $this->table = $table;
         $this->recordIndex=$recordIndex;
         $this->choppedData = array();
         if ($rawData && strlen($rawData)>0) {

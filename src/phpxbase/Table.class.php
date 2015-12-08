@@ -105,7 +105,7 @@ class XBaseTable {
         $this->columns = array();
         $bytepos = 1;
         for ($i=0;$i<$fieldCount;$i++) {
-            $column =& new XBaseColumn(
+            $column = new XBaseColumn(
                 $this->readString(11),	// name
                 $this->readByte(),		// type
                 $this->readInt(),		// memAddress
@@ -122,7 +122,7 @@ class XBaseTable {
             );
             $bytepos+=$column->getLength();
             $this->columnNames[$i] = $column->getName();
-            $this->columns[$i] =& $column;
+            $this->columns[$i] = $column;
         }
 
         /**/
@@ -146,7 +146,7 @@ class XBaseTable {
         do {
             if ($this->recordPos+1>=$this->recordCount) return false;
             $this->recordPos++;
-            $this->record =& new XBaseRecord($this,$this->recordPos,$this->readBytes($this->recordByteLength));
+            $this->record = new XBaseRecord($this,$this->recordPos,$this->readBytes($this->recordByteLength));
             if ($this->record->isDeleted()) {
                 $this->deleteCount++;
             } else {
@@ -159,7 +159,7 @@ class XBaseTable {
 	    $this->recordPos=$index;
 	    if ($index<0) return;
 	    fseek($this->fp,$this->headerLength+($index*$this->recordByteLength));
-	    $this->record =& new XBaseRecord($this,$this->recordPos,$this->readBytes($this->recordByteLength));
+	    $this->record = new XBaseRecord($this,$this->recordPos,$this->readBytes($this->recordByteLength));
         return $this->record;
     }
     function &getRecord() {
@@ -211,7 +211,7 @@ class XBaseTable {
 		    $result .= "</tr>\n";
 	    }
 	    $this->moveTo(-1);
-	    while ($r =& $this->nextRecord()) {
+	    while ($r = $this->nextRecord()) {
 		    $result .= "<tr $trArgs >\n";
 		    foreach ($this->getColumns() as $i=>$c) {
 			    $result .= "<td $tdArgs >".$r->getString($c)."</td>\n";
@@ -251,7 +251,7 @@ class XBaseTable {
 	    $result .= "</columns>\n";
 	    $result .= "<records>\n";
 	    $this->moveTo(-1);
-	    while ($r =& $this->nextRecord()) {
+	    while ($r = $this->nextRecord()) {
 		    $result .= "<record>\n";
 		    foreach ($this->getColumns() as $i=>$c) {
 			    $result .= "<".$c->name.">".$r->getObject($c)."</".$c->name.">\n";
