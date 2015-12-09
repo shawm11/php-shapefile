@@ -208,8 +208,8 @@ class ShapeFile {
 		$i		= -1;
 		$parts	= array();
 		foreach ($data['parts'] as $rawpart) {
+            $i++;
 			if ($this->IsClockwise($rawpart['points'])) {
-				$i++;
 				$parts[$i] = array(
 					'numrings'	=> 0,
 					'rings'		=> array()
